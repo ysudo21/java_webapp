@@ -1,0 +1,27 @@
+
+{
+  // 任意の名前でOKです。
+  "name": "Java_WebApp",
+
+  // Remoteでログインしたいコンテナを作成するためのDockerfileの名称を指定します。
+  "dockerFile": "Dockerfile",
+
+  // この設定によりホストOSの8080宛の通信がコンテナの8080に転送されます。
+  "forwardPorts": [8080],
+
+  // コンテナに入ったときに最初にここで指定したものがカレントディレクトリになります。
+  "workspaceFolder": "/opt/project",
+
+  // ホストOSのVisual Studio Codeのプロジェクト直下のディレクトリをコンテナの/opt/projectディレクトリにマウント>します。
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/opt/project,type=bind,consistency=cached"
+  ],
+
+  // コンテナが生成されたときに、コンテナ側にインストールする拡張機能です。
+  // これを指定しないと、コンテナが再生成すると拡張機能が消えます。
+  // 今回はJava Extension PackとTomcat for Javaをインストールします。
+  "extensions": [
+    "vscjava.vscode-java-pack",
+    "adashen.vscode-tomcat"
+  ]
+}
